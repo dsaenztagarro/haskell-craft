@@ -1,6 +1,15 @@
+-- 10.16
+
+mystery xs = foldr (++) [] (map sing xs)
+sing x = [x]
+
+-- mystery "abcde" # => "abcde"
+
 -- 10.18
 
--- filterFirst p xs = zipWith step xs $ map p xs
+filterFirst p xs = beforeFirst ++ afterFirst
+    where beforeFirst = takeWhile p xs
+          afterFirst =  drop (length beforeFirst + 1) xs
 
 -- 10.20
 -- switchMap addOne addTen [1,2,3,4] # => [2,12,4,14]
