@@ -1,10 +1,10 @@
 -- 10.20
--- addOne x = x + 1
--- addTen x = x + 10
 -- switchMap addOne addTen [1,2,3,4] # => [2,12,4,14]
+addOne x = x + 1
+addTen x = x + 10
 
-switchMap f g xs = map step $ zip xs (take (length xs) [1..])
-    where step (x, index) = if odd index then f x else g x
+switchMap f g xs = zipWith step xs (take (length xs) [1..])
+    where step x index = if odd index then f x else g x
 
 -- 10.21
 -- split [1,2,3,4,5]      # => ([1,3,5], [2,4])
